@@ -1,0 +1,9 @@
+dtypes:
+  num_documento: string
+  num_linea: int
+  cod_articulo: string
+  descripcion: string
+  cantidad: float
+  precio_unitario: float
+  total_linea: float
+

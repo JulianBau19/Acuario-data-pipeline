@@ -1,0 +1,3 @@
+dtypes:
+  cod_proveedor: string
+  nombre_proveedor: string

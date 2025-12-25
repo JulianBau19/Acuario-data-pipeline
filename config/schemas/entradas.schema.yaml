@@ -1,0 +1,16 @@
+dtypes:
+  cod_entrada: string
+  fecha: date
+  cod_proveedor: string
+  cod_almacen: string
+  nombre_proveedor: string
+  total: float
+
+date_formats:
+  fecha_entrada:
+    - "%d/%m/%Y"
+    - "%Y-%m-%d"
+    - "%d-%m-%Y"
+
+
+

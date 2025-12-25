@@ -1,0 +1,17 @@
+CODLEN: cod_entrada
+POSLEN: num_linea
+ARTLEN: cod_articulo
+DESLEN: descripcion
+CANLEN: cantidad
+PRELEN: precio_unitario
+TOTLEN: total_linea
+
+keep:
+- cod_entrada
+- num_linea
+- cod_articulo
+- descripcion
+- cantidad
+- precio_unitario
+- total_linea
+

@@ -1,0 +1,15 @@
+dtypes:
+  tipo_factura: int
+  num_factura: string
+  fecha: date
+  cod_cliente: string
+  nombre_cliente: string
+  total_base: float
+  total_iva: float
+  total_factura: float
+
+date_formats:
+  fecha:
+    - "%d/%m/%Y"
+    - "%Y-%m-%d"
+

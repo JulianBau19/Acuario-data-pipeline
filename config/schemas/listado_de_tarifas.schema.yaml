@@ -1,0 +1,4 @@
+dtypes:
+  cod_articulo: string
+  descripcion: string
+  precio_de_venta: float

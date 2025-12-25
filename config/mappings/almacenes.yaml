@@ -1,0 +1,21 @@
+# config/mappings/almacenes.yaml
+# Mapeo de columnas crudas → columnas limpias (snake_case)
+CODALM: cod_almacen
+NOMALM: nombre_almacen
+OBSALM: observaciones
+DIRALM: direccion
+CPOALM: codigo_postal
+POBALM: poblacion
+PROALM: provincia
+PCOALM: pais
+TELALM: telefono
+FAXALM: fax
+EMAALM: email
+
+
+## vamos a añadir un keep para solo quedarnos con las columnas que realmente nos importan
+
+keep:
+- cod_almacen
+- nombre_almacen
+

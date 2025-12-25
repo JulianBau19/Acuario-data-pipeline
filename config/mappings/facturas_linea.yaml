@@ -1,0 +1,24 @@
+TIPLFA: tipo_linea
+CODLFA: num_factura
+POSLFA: num_linea
+ARTLFA: cod_articulo
+DESLFA: descripcion
+CANLFA: cantidad
+PRELFA: precio_unitario
+TOTLFA: total_linea
+IVALFA: iva_linea
+TIVLFA: total_linea_con_iva
+
+
+
+keep:
+  - tipo_linea
+  - num_factura
+  - num_linea
+  - cod_articulo
+  - descripcion
+  - cantidad
+  - precio_unitario
+  - total_linea
+  - iva_linea
+  - total_linea_con_iva

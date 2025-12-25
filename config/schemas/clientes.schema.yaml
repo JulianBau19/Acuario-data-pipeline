@@ -1,0 +1,9 @@
+dtypes:
+  cod_cliente: string
+  nombre: string
+  domicilio: string
+  poblacion: string
+  codigopostal: string
+
+
+  

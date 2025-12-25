@@ -1,0 +1,9 @@
+CODCLI: cod_cliente
+NOFCLI: nombre
+DOMCLI: domicilio
+POBCLI: poblacion
+CPOCLI: codigopostal
+
+keep:
+  - cod_cliente
+  - nombre

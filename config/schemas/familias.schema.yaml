@@ -1,0 +1,3 @@
+dtypes:
+  codigo_familia: string
+  descripcion: string

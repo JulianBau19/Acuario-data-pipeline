@@ -1,0 +1,4 @@
+dtypes:
+  cod_articulo: string
+  stock_actual: float
+

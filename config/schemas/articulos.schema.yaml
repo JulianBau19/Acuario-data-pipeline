@@ -1,0 +1,10 @@
+dtypes:
+  cod_articulo: string
+  familia: string
+  nombre: string
+  costo: float
+  almacen: string
+  fecha_alta: date
+date_formats:
+  fecha_alta: ["%d/%m/%Y"]
+

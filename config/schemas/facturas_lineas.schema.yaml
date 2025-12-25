@@ -1,0 +1,11 @@
+dtypes:
+  tipo_linea: int
+  num_factura: string
+  num_linea: int
+  cod_articulo: string
+  descripcion: string
+  cantidad: float
+  precio_unitario: float
+  total_linea: float
+  iva_linea: float
+  total_linea_con_iva: float

@@ -1,0 +1,19 @@
+# config/schemas/almacenes.schema.yaml
+# Tipos esperados por columna (después del renombrado)
+dtypes:
+  cod_almacen: string
+  nombre_almacen: string
+  observaciones: string
+  direccion: string
+  codigo_postal: string # Prefiero guardarlos como string por que no queremos perder ceros ni formateos a la izq
+  poblacion: string
+  provincia: string
+  pais: string
+  telefono: string  # Prefiero guardarlos como string por que no queremos perder ceros ni formateos a la izq
+  fax: string
+  email: string
+
+# Si hay fechas:
+# date_formats:
+#   fecha_creacion: ["%d/%m/%Y", "%Y-%m-%d"]
+

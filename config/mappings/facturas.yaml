@@ -1,0 +1,19 @@
+TIPFAC: tipo_factura
+CODFAC: num_factura
+FECFAC: fecha
+CLIFAC: cod_cliente
+CNOFAC: nombre_cliente
+NET1FAC: total_base
+IIVA1FAC: total_iva
+TOTFAC: total_factura
+
+
+keep:
+  - tipo_factura
+  - num_factura
+  - fecha
+  - cod_cliente
+  - nombre_cliente
+  - total_base
+  - total_iva
+  - total_factura
