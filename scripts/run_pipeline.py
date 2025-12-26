@@ -21,7 +21,7 @@ from acuario.create_cln_from_stg import create_cln_tables
 
 
 # ─────────────────────────────
-# CONFIG (por ahora aquí; luego lo pasamos a YAML/ENV)
+# CONFIG
 # ─────────────────────────────
 PIPELINE_NAME = "processed_pipeline"
 LAYER_NAME = "cln"
@@ -47,7 +47,7 @@ def run_step(engine, control_id: int, step_name: str, fn):
     step_id = etl_step_start(engine, control_id, step_name)
 
     try:
-        # IMPORTANTE: aquí se ejecuta fn(), NO run_step()
+        # IMPORTANTE: aquí se ejecuta fn , NO run_step()
         result = fn()
 
         row_count = None
@@ -83,7 +83,7 @@ def main() -> None:
         )
         print(f"[LOG_START] control_id={control_id}")
 
-        # STEP 1: READ RAW
+        # paso 1: READ RAW
         dfs = run_step(
             engine,
             control_id,
@@ -91,7 +91,7 @@ def main() -> None:
             lambda: leer_excels(RAW),
         )
 
-        # STEP 2: CLEAN BATCH
+        # paso 2: CLEAN BATCH
         dfs_limpios = run_step(
             engine,
             control_id,
@@ -104,14 +104,14 @@ def main() -> None:
             ),
         )
 
-        # STEP 3: WRITE PROCESSED
+        # paso 3: WRITE PROCESSED
         run_step(
             engine,
             control_id,
             "write_processed",
             lambda: guardar_parquet(dfs_limpios, PROCESSED),
         )
-        # STEP 4: DBO → STG
+        # paso 4: DBO to STG
         run_step(
             engine,
             control_id,
@@ -119,23 +119,22 @@ def main() -> None:
             lambda: sync_dbo_to_stg(engine),
         )
 
-        # STEP 5: STG → CLN incremental (solo nuevos, deduplicado)
+        # paso 5: STG to CLN incremental (solo nuevos deduplicado)
         run_step(
             engine,
             control_id,
             "stg_to_cln_incremental",
             lambda: load_cln_incremental(engine),
         )
-
-        # # STEP 6: asegurar UNIQUE en CLN (blindaje anti-duplicados)
+#------------------------------TRABAJANDO:-------------------------------------------
+        # # STEP 6: asegurar UNIQUE en CLN ,blindaje anti-duplicados
         # run_step(
         #     engine,
         #     control_id,
         #     "cln_unique_constraints",
         #     lambda: ensure_cln_unique_constraints(engine),
-        # )
-
-
+        # ) 
+#-------------------------------------------------------------------------
 
         # END RUN OK
         etl_log_end_ok(engine, control_id=control_id, rows_inserted=None)
