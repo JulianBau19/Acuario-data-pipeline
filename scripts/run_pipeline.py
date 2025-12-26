@@ -1,8 +1,8 @@
 from __future__ import annotations
-
 from pathlib import Path
 from typing import Callable, Any, Dict
-
+from acuario.load_cln_incremental import load_cln_incremental
+from acuario.ensure_cln_unique_constraints import ensure_cln_unique_constraints
 from acuario.config import RAW, PROCESSED, ROOT
 from acuario.io_load import leer_excels
 from acuario.export import guardar_parquet
@@ -119,13 +119,22 @@ def main() -> None:
             lambda: sync_dbo_to_stg(engine),
         )
 
-        # STEP 5: STG → CLN (SQL)
+        # STEP 5: STG → CLN incremental (solo nuevos, deduplicado)
         run_step(
             engine,
             control_id,
-            "stg_to_cln",
-            lambda: create_cln_tables(engine),
+            "stg_to_cln_incremental",
+            lambda: load_cln_incremental(engine),
         )
+
+        # # STEP 6: asegurar UNIQUE en CLN (blindaje anti-duplicados)
+        # run_step(
+        #     engine,
+        #     control_id,
+        #     "cln_unique_constraints",
+        #     lambda: ensure_cln_unique_constraints(engine),
+        # )
+
 
 
         # END RUN OK

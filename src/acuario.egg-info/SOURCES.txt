@@ -2,9 +2,13 @@ README.md
 setup.py
 src/acuario/__init__.py
 src/acuario/config.py
+src/acuario/create_cln_from_stg.py
+src/acuario/create_stg_from_dbo.py
 src/acuario/db.py
+src/acuario/etl_logger.py
 src/acuario/export.py
 src/acuario/io_load.py
+src/acuario/reorder_gold_dims.py
 src/acuario/transform_clean.py
 src/acuario.egg-info/PKG-INFO
 src/acuario.egg-info/SOURCES.txt
