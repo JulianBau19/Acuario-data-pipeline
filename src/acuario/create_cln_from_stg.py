@@ -5,9 +5,8 @@ from __future__ import annotations
 from sqlalchemy import text
 
 
-# =====================================================
-# FUNCIONES DE LIMPIEZA (igual que antes)
-# =====================================================
+# FUNCIONES DE LIMPIEZA
+
 def proper_case_sql(col: str) -> str:
     col_quoted = f"[{col}]"
     return f"""
@@ -55,9 +54,8 @@ def limpiar_num_sql(col: str) -> str:
     """
 
 
-# =====================================================
-# GENERADOR DINÁMICO DEL SELECT LIMPIO
-# =====================================================
+# GENERADOR dinamico DEL SELECT LIMPIO
+
 def generar_select_limpio(conn, table_name: str) -> str:
     cols = conn.execute(text(f"""
         SELECT COLUMN_NAME, DATA_TYPE
@@ -102,9 +100,9 @@ def generar_select_limpio(conn, table_name: str) -> str:
     return ",\n    ".join(select_parts)
 
 
-# =====================================================
+
 # PROCESO PRINCIPAL
-# =====================================================
+# --------------------------
 def create_cln_tables(engine) -> int:
     """
     Crea tablas cln.* a partir de stg.* aplicando reglas de limpieza.
@@ -123,7 +121,7 @@ def create_cln_tables(engine) -> int:
         stg_tables = [row[0] for row in result]
 
         for table in stg_tables:
-            # drop cln
+            # dropeamos cln
             conn.execute(text(f"""
                 IF OBJECT_ID('cln.{table}', 'U') IS NOT NULL
                     DROP TABLE cln.{table};
@@ -148,7 +146,7 @@ def create_cln_tables(engine) -> int:
 
 
 if __name__ == "__main__":
-    # Ejecución manual (útil para debug). Mantiene compatibilidad.
+    # Ejecución manual. Mantiene compatibilidad.
     from acuario.db import get_engine
     engine = get_engine()
     rows = create_cln_tables(engine)
