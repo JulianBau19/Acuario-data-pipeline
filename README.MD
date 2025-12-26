@@ -1,49 +1,53 @@
 # Acuario Data Project (Python + SQL Server DWH)
+# Pipeline de data engineering end to end
 
-Pipeline end-to-end para transformar datos operativos (Excel / Xlsx) en una base preparada para analítica (SQL Server), con logging de ejecución y trazabilidad por pasos.
-
+Pipeline end-to-end de Ingeniería de Datos para transformar datos operativos (Excel / XLSX) en un Data Warehouse en SQL Server, con logging de ejecución y trazabilidad completa por pasos.
 
 ## IMPORTANTE: Datos
-Los datos utilizados en este proyecto no se incluyen por motivos de
-confidencialidad. El pipeline es totalmente reproducible utilizando
-datos de ejemplo con la misma estructura.
+Los datos utilizados en este proyecto no se incluyen por motivos de confidencialidad.
+El pipeline es completamente reproducible utilizando datos de ejemplo que respeten la misma estructura y esquemas.
+
 
 ## Stack ##
 - Python (pandas) + SQLAlchemy
 - SQL Server
 - Parquet (capa intermedia)
-- Configuración por ficheros (mappings/schemas)
+- Configuración por ficheros (mappings / schemas desacoplados del código)
 
 ## Arquitectura ( alto nivel ) ##
 **RAW (Excel) → PROCESSED (Parquet) → DBO (SQL) → STG (SQL) → CLN (SQL) → GOLD (SQL)**
+Arquitectura por capas inspirada en entornos productivos de Data Engineering, separando ingesta, limpieza, estandarización y modelado analítico.
 
 
-Actualmente el entrypoint ejecuta:
+Actualmente el entrypoint (`run_pipeline.py`) ejecuta:
 - RAW → PROCESSED (Parquet)
 - DBO → STG
 - STG → CLN
 y registra cada paso en tablas de logging (`clt.etl_*...`).
+La arquitectura está preparada para extenderse a cargas incrementales, capa GOLD y orquestación automática.
+
 
 ## Estructura del proyecto
 
 scripts/
   run_pipeline.py          # Entry point único del pipeline
-  load_to_sql.py           # (utilidad) carga a SQL
-  preview_clean.py         # (utilidad) preview
-  preview_processed.py     # (utilidad) preview
-  listar_cabeceras.py      # (utilidad) inspección columnas
+  load_to_sql.py           # utilidad: carga a SQL
+  preview_clean.py         # utilidad: preview CLN
+  preview_processed.py     # utilidad: preview Parquet
+  listar_cabeceras.py      # utilidad: inspección columnas
 sql/
-  ...                      # scripts SQL (Tables,constraints,views, etc.)
+  ...                      # scripts SQL (tables, constraints, views)
 src/
   acuario/
-    config.py              # rutas RAW/PROCESSED/ROOT
-    db.py                  # get_engine() conexion a base de datos
-    etl_logger.py          # logging de runs/steps
-    io_load.py             # lectura Excel / XLSX
-    transform_clean.py     # limpieza con mappings/schemas
-    export.py              # guardar parquet
-    create_stg_from_dbo.py # dbo → stg
-    create_cln_from_stg.py # stg → cln
+    config.py
+    db.py
+    etl_logger.py
+    io_load.py
+    transform_clean.py
+    export.py
+    create_stg_from_dbo.py
+    create_cln_from_stg.py
+
 
 ## Requisitos para correrlo
 
@@ -91,6 +95,10 @@ Esto permite trazabilidad completa y facilita el debugging y monitoreo del pipel
 
 
 ## Estado del proyecto
-Proyecto en desarrollo continuo. La capa GOLD y automatización completa
-forman parte del roadmap.
+
+✔ Ingesta y procesamiento funcional  
+✔ Capas DBO, STG y CLN implementadas  
+✔ Logging y trazabilidad completos  
+
+PROXIMO: Implementación de capa GOLD e integración con orquestador (Airflow / cron)
 
