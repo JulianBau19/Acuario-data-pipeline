@@ -1,7 +1,6 @@
 /* 
-   File:    sql/00_admin/00_create_schemas.sql
-   Proposito: Crear schemas del DWH (STG/CLN/GOLD) si no existen.
-   Notes:   Ejecutar 1 vez al iniciar el entorno o cuando recreas la BD.
+   Crear schemas del DWH (STG/CLN/GOLD) si no existen!!
+   IMPORTANTE:   Ejecutar 1 vez al iniciar el entorno o cuando recreas la BD
   
 */
 
