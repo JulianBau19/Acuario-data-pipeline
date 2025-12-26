@@ -1,4 +1,3 @@
-# src/acuario/ensure_cln_unique_constraints.py
 
 from __future__ import annotations
 from dataclasses import dataclass
