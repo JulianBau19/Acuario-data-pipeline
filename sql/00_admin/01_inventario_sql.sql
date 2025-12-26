@@ -1,6 +1,6 @@
 /* 
    INVENTARIO DWH - Tablas / Vistas / Procedimientos
-   QUE ES LO QUE TENEMOS DE MOMENTO.
+   QUE ES LO QUE TENEMOS DE MOMENTO!!
    */
 
 -- TABLAS (stg/cln/gold)
@@ -23,7 +23,7 @@ JOIN sys.schemas s ON s.schema_id = v.schema_id
 WHERE s.name IN ('stg','cln','gold')
 ORDER BY s.name, v.name;
 
--- PROCEDIMIENTOS (stg/cln/gold/dbo si usas dbo)
+-- PROCEDIMIENTOS (stg/cln/gold/dbo)
 SELECT
     s.name  AS [schema],
     p.name  AS [object_name],
