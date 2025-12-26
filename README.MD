@@ -1,7 +1,7 @@
 # Acuario Data Project (Python + SQL Server DWH)
 # Pipeline de data engineering end to end
 
-Pipeline end-to-end de Ingeniería de Datos para transformar datos operativos (Excel / XLSX) en un Data Warehouse en SQL Server, con logging de ejecución y trazabilidad completa por pasos.
+Pipeline end-to-end de Ingeniería de Datos para transformar datos operativos (Excel / XLSX) en un Data Warehouse en SQL Server, con logging de ejecución y trazabilidad completa por pasos. Este proyecto implementa un pipeline de datos end-to-end para un negocio real (Pinturas Acuario) , desde ingesta hasta modelo analítico.
 
 ## IMPORTANTE: Datos
 Los datos utilizados en este proyecto no se incluyen por motivos de confidencialidad.
