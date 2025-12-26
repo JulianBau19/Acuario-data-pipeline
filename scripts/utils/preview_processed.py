@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-PROCESSED = Path("data/processed")   # ajusta si usas otra ruta
+PROCESSED = Path("data/processed")   # ruta
 
 def main():
     for fichero in PROCESSED.glob("*.parquet"):
